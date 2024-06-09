@@ -1,0 +1,257 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600%2C700"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A600%2C700"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bodoni+MT%3A700"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arial%3A400%2C700"/>
+    <style>
+      body {
+          background-image: url("{% static 'eu.jpeg' %}");
+          background-size: cover; /* Optional: makes sure the background covers the entire page */
+          background-position: center; /* Optional: centers the background image */
+          background-repeat: no-repeat; /* Optional: prevents the background from repeating */
+      }
+      .main {
+        position: absolute;
+        top: 150px;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(5px);
+	        -webkit-backdrop-filter: blur(5px);       
+      }
+      .container {
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            justify-content: center; /* Center items horizontally */
+            align-items: center; /* Center items vertically */
+            text-align: center; /* Center the text */
+            padding: 20px;
+            margin-top: 40vh;
+            backdrop-filter: blur(5px);
+	        -webkit-backdrop-filter: blur(5px);           
+            border-radius: 10px; /* Optional: Rounded corners */
+            backdrop-filter: blur(10px); /* Additional blur for content */
+            background: rgba(58, 45, 45, 0.6); /* Optional: Add a semi-transparent overlay */            max-width: 90%; /* Ensure the container doesn't overflow the viewport width */
+            max-height: auto; /* Ensure the container doesn't overflow the viewport height */
+
+        }
+    .item{
+        background: rgba(255, 255, 255, 0.8); /* Optional: Slight background for readability */
+        font-size: 19px;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 5px auto;
+        width: 95%;
+    }
+    label{
+    }
+    h1{
+        color: white;
+    }
+    footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 2vh;
+    width: 100%;
+    backdrop-filter: blur(200px);
+    -webkit-backdrop-filter: blur(200px);
+    color: black; /* Adjust as needed */
+    text-align: center;
+    padding: 19px 0;
+    font-size: 14px
+    }
+    .sub{
+        border-radius: 10px;
+        width: 40%;
+        height: 5vh;
+        background-color: black;
+        color: antiquewhite;
+    }
+    option{
+        width: 80%;
+        height: 6vh;
+    }      
+  </style>
+<body>
+  <div class="main">
+    <div class="container">
+        <h1>Vote for Your Candidates</h1>
+      <form method="POST" action="{% url 'vote_submit' %}">
+          {% csrf_token %}
+          <div class="item">
+          <!-- Most Influential -->
+          <label for="Most_Influential">Most Influential:</label></br>
+          <select name="Most_Influential" id="Most_Influential" required onchange="disableOtherRadios(this)">
+              <option value="" disabled selected>Select a candidate</option>
+              {% for candidate in most_influential_candidates %}
+                  <option value="{{ candidate.id }}">{{ candidate.name }}</option>
+              {% endfor %}
+          </select><br><br>
+          </div>
+          <div class="item">
+          <!-- Social Media Content Creator -->
+          <label for="Social_Media_Content_Creator">Social Media Content Creator:</label></br>
+          <select name="Social_Media_Content_Creator" id="Social_Media_Content_Creator" required onchange="disableOtherRadios(this)">
+              <option value="" disabled selected>Select a candidate</option>
+              {% for candidate in social_media_content_creators %}
+                  <option value="{{ candidate.id }}">{{ candidate.name }}</option>
+              {% endfor %}
+          </select><br><br>
+          </div>
+          <div class="item">
+          <!-- Sportsman of the Year -->
+          <label for="general_secretaries">Sportsman of the Year:</label></br>
+          <select name="general_secretaries" id="general_secretaries" required onchange="disableOtherRadios(this)">
+              <option value="" disabled selected>Select a candidate</option>
+              {% for candidate in sportsmen_of_the_year %}
+                  <option value="{{ candidate.id }}">{{ candidate.name }}</option>
+              {% endfor %}
+          </select><br><br>
+          </div>
+          <div class="item">
+          <!-- Most Fashionable Male -->
+          <label for="Most_Fashionable_Male">Most Fashionable Male:</label></br>
+          <select name="Most_Fashionable_Male" id="Most_Fashionable_Male" required onchange="disableOtherRadios(this)">
+              <option value="" disabled selected>Select a candidate</option>
+              {% for candidate in most_fashionable_male_candidates %}
+                  <option value="{{ candidate.id }}">{{ candidate.name }}</option>
+              {% endfor %}
+          </select><br><br>
+          </div>
+          <div class="item">
+          <!-- Sportswoman of the Year -->
+          <label for="Sportswoman_of_the_Year">Sportswoman of the Year:</label></br>
+          <select name="Sportswoman_of_the_Year" id="Sportswoman_of_the_Year" required onchange="disableOtherRadios(this)">
+              <option value="" disabled selected>Select a candidate</option>
+              {% for candidate in sportswomen_of_the_year %}
+                  <option value="{{ candidate.id }}">{{ candidate.name }}</option>
+              {% endfor %}
+          </select><br><br>
+          </div>
+          <div class="item">
+          <!-- Most Popular Male -->
+          <label for="Most_Popular_Male">Most Popular Male:</label></br>
+          <select name="Most_Popular_Male" id="Most_Popular_Male" required onchange="disableOtherRadios(this)">
+              <option value="" disabled selected>Select a candidate</option>
+              {% for candidate in most_popular_male_candidates %}
+                  <option value="{{ candidate.id }}">{{ candidate.name }}</option>
+              {% endfor %}
+          </select><br><br>
+          </div>
+          <div class="item">
+          <!-- Most Popular Female -->
+          <label for="Most_Popular_Female">Most Popular Female:</label></br>
+          <select name="Most_Popular_Female" id="Most_Popular_Female" required onchange="disableOtherRadios(this)">
+              <option value="" disabled selected>Select a candidate</option>
+              {% for candidate in most_popular_female_candidates %}
+                  <option value="{{ candidate.id }}">{{ candidate.name }}</option>
+              {% endfor %}
+          </select><br><br>
+          </div>
+          <div class="item">
+          <!-- Entrepreneur of the Year Male -->
+          <label for="Entrepreneur_of_the_Year_Male">Entrepreneur of the Year Male:</label></br>
+          <select name="Entrepreneur_of_the_Year_Male" id="Entrepreneur_of_the_Year_Male" required onchange="disableOtherRadios(this)">
+              <option value="" disabled selected>Select a candidate</option>
+              {% for candidate in entrepreneur_of_the_year_male_candidates %}
+                  <option value="{{ candidate.id }}">{{ candidate.name }}</option>
+              {% endfor %}
+          </select><br><br>
+          </div>
+          <div class="item">
+          <!-- Entrepreneur of the Year Female -->
+          <label for="Entrepreneur_of_the_Year_Female">Entrepreneur of the Year Female:</label></br>
+          <select name="Entrepreneur_of_the_Year_Female" id="Entrepreneur_of_the_Year_Female" required onchange="disableOtherRadios(this)">
+              <option value="" disabled selected>Select a candidate</option>
+              {% for candidate in entrepreneur_of_the_year_female_candidates %}
+                  <option value="{{ candidate.id }}">{{ candidate.name }}</option>
+              {% endfor %}
+          </select><br><br>
+          </div>
+          <div class="item">
+          <!-- Most Social -->
+          <label for="Most_Social">Most Social:</label></br>
+          <select name="Most_Social" id="Most_Social" required onchange="disableOtherRadios(this)">
+              <option value="" disabled selected>Select a candidate</option>
+              {% for candidate in most_social_candidates %}
+                  <option value="{{ candidate.id }}">{{ candidate.name }}</option>
+              {% endfor %}
+          </select><br><br>
+          </div>
+          <div class="item">
+          <!-- Most Fashionable Female -->
+          <label for="Most_Fashionable_Female">Most Fashionable Female:</label></br>
+          <select name="Most_Fashionable_Female" id="Most_Fashionable_Female" required onchange="disableOtherRadios(this)">
+              <option value="" disabled selected>Select a candidate</option>
+              {% for candidate in most_fashionable_female_candidates %}
+                  <option value="{{ candidate.id }}">{{ candidate.name }}</option>
+              {% endfor %}
+          </select><br><br>
+          </div>
+          <div class="item">
+          <label for="Most_Fashionable_Female">Most Fashionable Female:</label></br>
+          <select name="Clique_of_the_Year" id="Clique_of_the_Year" required onchange="disableOtherRadios(this)">
+              <option value="" disabled selected>Select a candidate</option>
+              {% for candidate in Clique_of_the_Year_candidates %}
+                  <option value="{{ candidate.id }}">{{ candidate.name }}</option>
+              {% endfor %}
+          </select><br><br>
+          </div>
+          <!-- Submit Button -->
+          <button class = "sub" type="submit" id="submit_button">Submit Your Votes</button>
+        </br></br></br></br></br></br>
+      </form>
+    </div>
+  </div>
+  <footer>
+    <p>developed by: Dairo David</p>
+  </footer>
+
+    <script>
+        function disableOtherRadios(clickedRadio) {
+            var radioName = clickedRadio.name;
+
+            // Get all radio buttons with the same name
+            var allRadios = document.getElementsByName(radioName);
+
+            // Loop through each radio button and disable it if it is not the clicked one
+            for (var i = 0; i < allRadios.length; i++) {
+                if (allRadios[i] !== clickedRadio) {
+                    allRadios[i].disabled = true;
+                }
+            }
+        }
+
+        // Additional disable functions can be added here
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if the submit button should be disabled
+            var hasVoted = /* Logic to check if the user has voted, you can use a session variable or other means */;
+            
+            if (hasVoted) {
+                // Disable the submit button
+                document.getElementById('submit_button').disabled = true;
+            }
+        });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          // Add an event listener to the form submission
+          document.querySelector('form').addEventListener('submit', function() {
+              // Disable the submit button
+              document.getElementById('submit_button').disabled = true;
+          });
+      });
+    </script>
+</body>
+</html>

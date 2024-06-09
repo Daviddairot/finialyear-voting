@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election Results</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Election Results</h1>
+
+    <!-- Most Influential Pie Chart -->
+    <h3>Most Influential Pie Chart</h3>
+    <canvas id="most_influential_chart" width="30" height="30"></canvas>    
+
+    <script>
+        var mostInfluentialCtx = document.getElementById('most_influential_chart').getContext('2d');
+        var mostInfluentialChart = new Chart(mostInfluentialCtx, {
+            type: 'pie',
+            data: {
+                labels: {{ labels | safe }},
+                datasets: [{
+                    label: 'Most Influential Votes',
+                    data: {{ votes | safe }},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                // Add options here if needed
+            }
+        });
+    </script>
+
+    <canvas id="Clique_of_the_Year_votes_chart" width="400" height="400"></canvas>
+
+    <script>
+        var Clique_of_the_Year_votesCtx = document.getElementById('Clique_of_the_Year_votes_chart').getContext('2d');
+        var Clique_of_the_Year_votesChart = new Chart(Clique_of_the_Year_votesCtx, {
+            type: 'pie',
+            data: {
+                labels: {{ colabels | safe }},
+                datasets: [{
+                    label: 'Clique of the Year votes',
+                    data: {{ covotes | safe }},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                // Add options here if needed
+            }
+        });
+    </script>
+
+
+    <!-- Social Media Content Creator Pie Chart -->
+    <h3>Social Media Content Creator</h3>
+    <canvas id="social_media_content_creator_chart" width="400" height="400"></canvas>
+
+    <script>
+        var socialMediaCtx = document.getElementById('social_media_content_creator_chart').getContext('2d');
+        var socialMediaChart = new Chart(socialMediaCtx, {
+            type: 'pie',
+            data: {
+                labels: {{ vlabels | safe }},
+                datasets: [{
+                    label: 'Social Media Content Creator Votes',
+                    data: {{ vvotes | safe }},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                // Add options here if needed
+            }
+        });
+    </script>
+<h3>Sportsman of the Year creator</h3>
+<canvas id="Sportsman_of_the_Year_creator_chart" width="400" height="400"></canvas>
+
+<script>
+    var socialMediaCtx = document.getElementById('Sportsman_of_the_Year_creator_chart').getContext('2d');
+    var socialMediaChart = new Chart(socialMediaCtx, {
+        type: 'pie',
+        data: {
+            labels: {{ gs_labels | safe }},
+            datasets: [{
+                label: 'Sportsman of the Year votes',
+                data: {{ gs_votes | safe }},
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            // Add options here if needed
+        }
+    });
+</script>
+
+<h3>Sportswoman of the Year votes</h3>
+<canvas id="Sportswoman_of_the_Year_votes_chart" width="400" height="400"></canvas>
+
+<script>
+    var SportswomanoftheYearvotesCtx = document.getElementById('Sportswoman_of_the_Year_votes_chart').getContext('2d');
+    var SportswomanoftheYearvotesChart = new Chart(SportswomanoftheYearvotesCtx, {
+        type: 'pie',
+        data: {
+            labels: {{ fs_labels | safe }},
+            datasets: [{
+                label: 'Sportswoman of the Year votes',
+                data: {{ fs_votes | safe }},
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            // Add options here if needed
+        }
+    });
+</script>
+
+<h3>Most Popular Male votes</h3>
+<canvas id="Most_Popular_Male_votes_chart" width="400" height="400"></canvas>
+
+<script>
+    var Most_Popular_Male_votesCtx = document.getElementById('Most_Popular_Male_votes_chart').getContext('2d');
+    var Most_Popular_Male_votesChart = new Chart(Most_Popular_Male_votesCtx, {
+        type: 'pie',
+        data: {
+            labels: {{ sd_labels | safe }},
+            datasets: [{
+                label: 'Most Popular Male votes',
+                data: {{ sd_votes | safe }},
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            // Add options here if needed
+        }
+    });
+</script>
+
+<h3>Most Popular Female votes</h3>
+<canvas id="Most_Popular_Female_votes_chart" width="400" height="400"></canvas>
+
+<script>
+    var Most_Popular_Female_votesCtx = document.getElementById('Most_Popular_Female_votes_chart').getContext('2d');
+    var Most_Popular_Female_votesChart = new Chart(Most_Popular_Female_votesCtx, {
+        type: 'pie',
+        data: {
+            labels: {{ td_labels | safe }},
+            datasets: [{
+                label: 'Most Popular Female votes',
+                data: {{ td_votes | safe }},
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            // Add options here if needed
+        }
+    });
+</script>
+
+<h3>Entrepreneur of the Year Male votes</h3>
+<canvas id="Entrepreneur_of_the_Year_Male_votes_chart" width="400" height="400"></canvas>
+
+<script>
+    var Entrepreneur_of_the_Year_Male_votesCtx = document.getElementById('Entrepreneur_of_the_Year_Male_votes_chart').getContext('2d');
+    var Entrepreneur_of_the_Year_Male_votesChart = new Chart(Entrepreneur_of_the_Year_Male_votesCtx, {
+        type: 'pie',
+        data: {
+            labels: {{ sp_labels | safe }},
+            datasets: [{
+                label: 'Entrepreneur of the Year Male votes',
+                data: {{ sp_votes | safe }},
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            // Add options here if needed
+        }
+    });
+</script>
+
+<h3>Entrepreneur of the Year Female</h3>
+<canvas id="Entrepreneur_of_the_Year_Female_votes_chart" width="400" height="400"></canvas>
+
+<script>
+    var Entrepreneur_of_the_Year_Female_votesCtx = document.getElementById('Entrepreneur_of_the_Year_Female_votes_chart').getContext('2d');
+    var Entrepreneur_of_the_Year_Female_votesChart = new Chart(Entrepreneur_of_the_Year_Female_votesCtx, {
+        type: 'pie',
+        data: {
+            labels: {{ pro_labels | safe }},
+            datasets: [{
+                label: 'Entrepreneur of the Year Female votes',
+                data: {{ pro_votes | safe }},
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            // Add options here if needed
+        }
+    });
+</script>
+
+
+<h3>Most Social votes</h3>
+<canvas id="Most_Social_votes_chart" width="400" height="400"></canvas>
+
+<script>
+    var Most_Social_votesCtx = document.getElementById('Most_Social_votes_chart').getContext('2d');
+    var Most_Social_votesChart = new Chart(Most_Social_votesCtx, {
+        type: 'pie',
+        data: {
+            labels: {{ t_labels | safe }},
+            datasets: [{
+                label: 'Most Social votes',
+                data: {{ t_votes | safe }},
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            // Add options here if needed
+        }
+    });
+</script>
+
+
+<h3>Most Fashionable Male votes</h3>
+<canvas id="Most_Fashionable_Male_votes_chart" width="400" height="400"></canvas>
+
+<script>
+    var Most_Fashionable_Male_votesCtx = document.getElementById('Most_Fashionable_Male_votes_chart').getContext('2d');
+    var Most_Fashionable_Male_votesChart = new Chart(Most_Fashionable_Male_votesCtx, {
+        type: 'pie',
+        data: {
+            labels: {{ wd_labels | safe }},
+            datasets: [{
+                label: 'Most Fashionable Male votes',
+                data: {{ wd_votes | safe }},
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            // Add options here if needed
+        }
+    });
+</script>
+
+<h3>Most Fashionable Female votes</h3>
+<canvas id="Most_Fashionable_Female_votes_chart" width="400" height="400"></canvas>
+
+<script>
+    var Most_Fashionable_Female_votesCtx = document.getElementById('Most_Fashionable_Female_votes_chart').getContext('2d');
+    var Most_Fashionable_Female_votesChart = new Chart(Most_Fashionable_Female_votesCtx, {
+        type: 'pie',
+        data: {
+            labels: {{ as_labels | safe }},
+            datasets: [{
+                label: 'Most Fashionable Female votes',
+                data: {{ as_votes | safe }},
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            // Add options here if needed
+        }
+    });
+</script>
+
+
+    <!-- Repeat the above script for other pie charts -->
+    <!-- Include scripts for other pie charts for each position -->
+
+</body>
+</html>
