@@ -160,7 +160,7 @@ def login_view(request):
             return render(request, 'next_page.html', {'feedback_message': feedback_message})
 
         if not name_exists:
-            feedback_message = "Name not found."
+            feedback_message = "Matric Number not found."
             return render(request, 'next_page.html', {'feedback_message': feedback_message})
 
         # Set the name in the session
