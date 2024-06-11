@@ -21,7 +21,7 @@
     <br/>
     
     </span>
-    <span class="nuesa-elections-type-in-your-matric-number-uNK-sub-1">Type in your Username</span>
+    <span class="nuesa-elections-type-in-your-matric-number-uNK-sub-1">Type in your Matric number</span>
   </p>
   <div class="matricdiv">
     {% if feedback_message %}
@@ -29,7 +29,7 @@
     {% endif %}
     <form method="post" action="{% url 'next' %}">
       {% csrf_token %}
-      <label for="username">Username:</label></br>
+      <label for="username">Matric number:</label></br>
       <input class = "email" type="text" name="name" id="name"  required><br>
       <input type="submit" class="btn">
     </form>
