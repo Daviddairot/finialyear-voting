@@ -5,8 +5,8 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('', views.index, name="index"),
-    path('next_page/', views.next_page, name='next_page'),
+    path('then', views.index, name="index"),
+    path('next_pag/', views.next_page, name='next_page'),
     path('next/', views.login_view, name='next'),  # 'next' is the login page
     path('vote/', views.vote, name='vote'),
     path('res/', views.end, name='end'),
