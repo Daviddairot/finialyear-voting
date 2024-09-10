@@ -80,14 +80,20 @@ WSGI_APPLICATION = 'nuproject.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         'PASSWORD': 'CnixBLpfzvqfSSWSEJZBtFXrLxNMEQKk',
+#         'HOST': 'roundhouse.proxy.rlwy.net',
+#         'PORT': '34637',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'CnixBLpfzvqfSSWSEJZBtFXrLxNMEQKk',
-        'HOST': 'roundhouse.proxy.rlwy.net',
-        'PORT': '34637',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
